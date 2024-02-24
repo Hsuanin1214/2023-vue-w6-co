@@ -57,11 +57,9 @@ export default defineComponent({
         .post(`${url.value}/admin/signin`, user.value)
         // 成功的結果
         .then((res) => {
-          console.log(res)
           // unix timestamp
           // 解構
           const { token, expired } = res.data // 解構
-          console.log(token, expired)
           router.push('/admin/product')
           // document.cookie = `someCookieName = true; expires = Fri,31 Dec 9999 23:59 GMT;`;
           document.cookie = `hexToken= ${token}; expires=${new Date(expired)}; path=/`
